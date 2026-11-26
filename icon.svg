@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="NEÓN">
+  <defs>
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#35f0c8" />
+      <stop offset="0.5" stop-color="#6ea8ff" />
+      <stop offset="1" stop-color="#ff4fd8" />
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#35f0c8" stop-opacity="0.35" />
+      <stop offset="1" stop-color="#35f0c8" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" fill="#06070f" />
+  <circle cx="256" cy="256" r="200" fill="url(#halo)" />
+  <g fill="url(#neon)">
+    <rect x="120" y="236" width="26" height="40" rx="13" />
+    <rect x="168" y="196" width="26" height="120" rx="13" />
+    <rect x="216" y="140" width="26" height="232" rx="13" />
+    <rect x="264" y="176" width="26" height="160" rx="13" />
+    <rect x="312" y="212" width="26" height="88" rx="13" />
+    <rect x="360" y="242" width="26" height="28" rx="13" />
+  </g>
+</svg>

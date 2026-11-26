@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>NEÓN · sintetizador + visualizador</title>
+  <meta name="description" content="Sintetizador polifónico y visualizador de audio en el navegador. Web Audio API + Canvas, sin dependencias." />
+  <meta name="theme-color" content="#06070f" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="icon.svg" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="NEÓN" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <div class="brand-text">
+          <h1>NEÓN</h1>
+          <p>sintetizador polifónico · visualizador</p>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="meter" aria-hidden="true"><i id="meter-bar"></i></div>
+        <button id="btn-midi" class="btn" type="button">MIDI</button>
+        <button id="btn-record" class="btn" type="button" disabled>● Grabar</button>
+        <button id="btn-power" class="btn btn-primary" type="button">Encender audio</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="stage">
+        <div class="canvas-wrap">
+          <canvas id="viz"></canvas>
+          <div class="hud">
+            <span class="hud-note" id="hud-note">—</span>
+            <span class="hud-voices" id="hud-voices">0 voces</span>
+          </div>
+        </div>
+
+        <div class="keyboard-card">
+          <div class="keyboard-toolbar">
+            <div class="group">
+              <button class="btn btn-sm" id="btn-oct-down" type="button" title="Bajar octava">−</button>
+              <span class="octave-label">Octava <b id="octave-label">3</b></span>
+              <button class="btn btn-sm" id="btn-oct-up" type="button" title="Subir octava">+</button>
+            </div>
+
+            <div class="group">
+              <button class="btn btn-sm" id="btn-sustain" type="button" aria-pressed="false">Sustain</button>
+              <button class="btn btn-sm" id="btn-arp" type="button" aria-pressed="false">Arp</button>
+              <button class="btn btn-sm" id="btn-viz" type="button">Radial</button>
+              <button class="btn btn-sm" id="btn-panic" type="button">Silencio</button>
+            </div>
+
+            <span class="hint">teclas <b>z–m</b> / <b>q–u</b> · octava <b>←</b> <b>→</b> · arp <b>espacio</b></span>
+          </div>
+
+          <div class="keyboard" id="keyboard"></div>
+        </div>
+      </section>
+
+      <aside class="panel">
+        <div class="preset-row" id="preset-row"></div>
+        <div id="sections"></div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <span>Web Audio API · sin dependencias</span>
+      <span id="status">audio apagado</span>
+    </footer>
+  </div>
+
+  <script src="js/synth.js"></script>
+  <script src="js/visualizer.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').catch(function () {});
+      });
+    }
+  </script>
+</body>
+</html>
